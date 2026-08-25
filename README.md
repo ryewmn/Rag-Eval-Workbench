@@ -1,5 +1,7 @@
 # RAG Evaluation Workbench
 
+[![CI](https://github.com/ryewmn/Rag-Eval-Workbench/actions/workflows/ci.yml/badge.svg)](https://github.com/ryewmn/Rag-Eval-Workbench/actions/workflows/ci.yml)
+
 A deterministic, local benchmark for answering a practical MLOps question: **did this retrieval change improve the RAG system, or quietly make it worse?**
 
 The workbench builds an auditable BM25 baseline, evaluates versioned relevance judgments, emits a structured experiment artifact, and fails CI when quality or latency crosses a configured threshold. The core uses only the Python standard library and requires no model download, vector database, API key, or paid service.
