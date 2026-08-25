@@ -1,0 +1,14 @@
+### Health check
+GET http://127.0.0.1:8000/health
+
+### Inspect retrieval results
+POST http://127.0.0.1:8000/search
+Content-Type: application/json
+
+{
+  "query": "How should I defend a RAG system from prompt injection?",
+  "k": 3
+}
+
+### Run the configured benchmark
+POST http://127.0.0.1:8000/benchmark

@@ -1,0 +1,12 @@
+{
+  "dataset_name": "rag-eval-handbook-mini",
+  "version": "1.0.0",
+  "license": "CC0-1.0",
+  "language": "en",
+  "created_by": "RAG Evaluation Workbench maintainers",
+  "description": "A synthetic, hand-authored corpus and relevance set for deterministic smoke testing. It contains no personal or production data.",
+  "files": {
+    "corpus": "corpus.jsonl",
+    "queries": "queries.jsonl"
+  }
+}

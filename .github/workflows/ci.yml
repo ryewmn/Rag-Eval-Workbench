@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - name: Install package
+        run: python -m pip install -e .
+      - name: Run tests
+        run: python -m unittest discover -s tests -v
+      - name: Validate versioned dataset
+        run: rag-eval validate --corpus data/v1/corpus.jsonl --queries data/v1/queries.jsonl
+      - name: Enforce retrieval regression gate
+        run: rag-eval benchmark --corpus data/v1/corpus.jsonl --queries data/v1/queries.jsonl --thresholds config/regression.json --output artifacts/benchmark.json
+      - name: Upload benchmark evidence
+        if: always() && matrix.python-version == '3.12'
+        uses: actions/upload-artifact@v4
+        with:
+          name: rag-benchmark-python-${{ matrix.python-version }}
+          path: artifacts/benchmark.json
+          if-no-files-found: error
+          retention-days: 14

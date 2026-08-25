@@ -1,0 +1,28 @@
+{
+  "dataset": {
+    "corpus_sha256": "5f14768ff62494dfd8ddcaa171058e086c0c92139d3cc665b7d1d17b033f3898",
+    "document_count": 12,
+    "queries_sha256": "bf7c28973ecd76f8b359e5dea9dba4f046fd23667bc8ab1454e25a94927e34b8",
+    "query_count": 10
+  },
+  "metrics": {
+    "citation_precision_at_k": 0.433333,
+    "groundedness_proxy_at_k": 0.870759,
+    "mrr_at_k": 1.0,
+    "ndcg_at_k": 1.0,
+    "recall_at_k": 1.0
+  },
+  "note": "Abridged stable fields from a reference run. The generated artifact also includes timestamp, machine-dependent latency, per-query rankings, scores, and threshold evidence.",
+  "regression_gate": {
+    "passed": true
+  },
+  "schema_version": "1.0",
+  "system": {
+    "parameters": {
+      "b": 0.75,
+      "k": 3,
+      "k1": 1.5
+    },
+    "retriever": "bm25"
+  }
+}
